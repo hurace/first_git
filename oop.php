@@ -27,6 +27,14 @@ class Person
 		echo "当在类外部使用unset()函数来删除私有成员时自动调用的\n";
 		unset($this->nm);
 	}	
+
+	public function __call($name,$arguments){
+		echo "Calling object method '$name' " . implode(', ', $arguments). "\n";
+	}
+
+	public static function __callStatic($name,$arguments){
+		echo "Calling static method '$name' " . implode(', ', $arguments). "\n";
+	}
 }
 
 $p1 = new Person();
@@ -45,11 +53,21 @@ $p1 = new Person();
 
 
 
-$p1->name="this is a person name";
+//$p1->name="this is a person name";
 //在使用isset()函数测定私有成员时，自动调用__isset()方法帮我们完成，返回结果为true
-echo var_dump(isset($p1->name))."\n";
-echo $p1->name."\n";
+//echo var_dump(isset($p1->name))."\n";
+//echo $p1->name."\n";
 //在使用unset()函数删除私有成员时，自动调用__unset()方法帮我们完成，删除name私有属性
-unset($p1->name);
+//unset($p1->name);
 //已经被删除了， 所这行不会有输出
-echo $p1->name;
+//echo $p1->name;
+
+
+
+$p1->runTest('in object context');
+
+Person::runTest(' in static context');
+
+
+
+
