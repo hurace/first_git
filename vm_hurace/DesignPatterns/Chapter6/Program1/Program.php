@@ -6,7 +6,7 @@
  * Time: 11:16
  */
 
-namespace DesignPatterns\Program1;
+namespace DesignPatterns\Chapter6\Program1;
 
 class Person{
     private $_name;

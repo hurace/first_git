@@ -5,7 +5,7 @@
  * Date: 2016-10-18
  * Time: 14:32
  */
-namespace DesignPatterns\Program3;
+namespace DesignPatterns\Chapter6\Program3;
 
 abstract class Component{
     public abstract function Operation();

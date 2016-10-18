@@ -5,7 +5,7 @@
  * Date: 2016-10-18
  * Time: 15:02
  */
-namespace DesignPatterns\Program4;
+namespace DesignPatterns\Chapter6\Program4;
 
 class Person{
     private $_name;
