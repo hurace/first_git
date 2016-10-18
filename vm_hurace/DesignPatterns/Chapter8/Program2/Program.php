@@ -99,7 +99,7 @@ class Program{
 
         $student->Wash();
         $student->Sweep();
-        $student1->BuyRice();
+        $student->BuyRice();
     }
 }
 
