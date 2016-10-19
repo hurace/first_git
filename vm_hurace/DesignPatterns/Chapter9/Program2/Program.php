@@ -33,8 +33,8 @@ class Resume{
 
     //显示
     public function Display(){
-        echo $this->_name,PHP_EOL,$this->_sex,PHP_EOL,$this->_age;
-        echo $this->_timeArea,PHP_EOL,$this->_company;
+        echo $this->_name,' ',$this->_sex,' ',$this->_age,PHP_EOL;
+        echo $this->_timeArea,' ',$this->_company,PHP_EOL;
     }
 }
 
