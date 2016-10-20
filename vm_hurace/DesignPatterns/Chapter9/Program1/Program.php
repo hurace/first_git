@@ -43,6 +43,7 @@ class Program{
         $a = new Resume('大鸟');
         $a->SetPersonInfo('男', 29);
         $a->SetWorkExperience('2014-2016', 'XX公司');
+        $a->Display();
     }
 }
 
