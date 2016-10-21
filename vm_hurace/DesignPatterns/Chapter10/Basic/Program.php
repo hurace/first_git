@@ -7,7 +7,7 @@
  */
 namespace DesignPatterns\Chapter10\Basic;
 
-abstract class AbstraceClass{
+abstract class AbstractClass{
     public abstract function PrimitiveOperation1();
     public abstract function PrimitiveOperation2();
 
@@ -17,7 +17,7 @@ abstract class AbstraceClass{
     }
 }
 
-class ConcreteClassA extends AbstraceClass{
+class ConcreteClassA extends AbstractClass{
     public function PrimitiveOperation1(){
         echo '具体类A方法1实现',PHP_EOL;
     }
@@ -27,7 +27,7 @@ class ConcreteClassA extends AbstraceClass{
     }
 }
 
-class ConcreteClassB extends AbstraceClass{
+class ConcreteClassB extends AbstractClass{
     public function PrimitiveOperation1(){
         echo '具体类B方法1实现',PHP_EOL;
     }
