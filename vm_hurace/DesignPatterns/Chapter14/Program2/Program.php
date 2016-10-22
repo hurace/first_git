@@ -20,7 +20,12 @@ class Secretary{
 
     //减少
     public function Detach(Observer $observer){
-        array_pop($observer);
+        foreach ($this->_observers as $key => $_observer) {
+            if($observer == $_observer){
+                unset($this->_observers[$key]);
+            }
+        }
+        $this->_observers = array_values($this->_observers);//重新索引数组
     }
 
     //通知
