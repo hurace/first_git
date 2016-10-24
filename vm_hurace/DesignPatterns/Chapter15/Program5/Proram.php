@@ -96,13 +96,13 @@ class DataAccess{
 
     public static function CreateUser(){
         self::$_className = self::$_db.'User';
-        $class = new \ReflectionClass(self::$_className);//简历SqlServerUser这个类的反射
+        $class = new \ReflectionClass(__NAMESPACE__ . '\\' . self::$_className);//简历SqlServerUser这个类的反射
         return $class->newInstance();//相当于实例化SqlServerUser类
     }
 
     public static function CreateDepartment(){
         self::$_className = self::$_db.'Department';
-        $class = new \ReflectionClass(self::$_className);
+        $class = new \ReflectionClass(__NAMESPACE__ . '\\' .  self::$_className);
         return $class->newInstance();
     }
 }
