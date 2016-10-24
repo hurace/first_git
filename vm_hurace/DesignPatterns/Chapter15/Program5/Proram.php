@@ -1,11 +1,11 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: hua
- * Date: 2016-10-22
- * Time: 17:33
+ * User: Administrator
+ * Date: 2016/10/23
+ * Time: 20:35
  */
-namespace DesignPatterns\Chapter15\Program4;
+namespace DesignPatterns\Chapter15\Program5;
 
 class User{
     private $_id;
@@ -90,31 +90,20 @@ class AccessDepartment implements IDepartment{
 }
 
 class DataAccess{
-    private static $_db = 'SqlServer';
+    private static $_className;
+//    private static $_db = 'SqlServer';
+    private static $_db = 'Access';
 
-    public static function CreatUser(){
-        $result = null;
-        switch(self::$_db){
-            case 'SqlServer':
-                $result = new SqlServerUser();
-                break;
-            case 'Access':
-                $result = new AccessUser();
-                break;
-        }
-        return $result;
+    public static function CreateUser(){
+        self::$_className = self::$_db.'User';
+        $class = new \ReflectionClass(self::$_className);//简历SqlServerUser这个类的反射
+        return $class->newInstance();//相当于实例化SqlServerUser类
     }
 
     public static function CreateDepartment(){
-        $result = null;
-        switch(self::$_db){
-            case 'SqlServer':
-                $result = new SqlServerDepartment();
-                break;
-            case 'Access':
-                $result = new AccessDepartment();
-        }
-        return $result;
+        self::$_className = self::$_db.'Department';
+        $class = new \ReflectionClass(self::$_className);
+        return $class->newInstance();
     }
 }
 
@@ -123,7 +112,7 @@ class Program{
         $user = new User();
         $dept = new Department();
 
-        $iu = DataAccess::CreatUser();
+        $iu = DataAccess::CreateUser();
 
         $iu->Insert($user);
         $iu->GetUser(1);
