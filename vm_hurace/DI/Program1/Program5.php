@@ -130,14 +130,19 @@ class Container{
 
 // ---
 $c = new Container();
+//var_dump($c);
 $c->bar = 'Bar';
+var_dump($c);die;
 $c->foo = function($c){
   return new Foo($c->bar);
 };
+var_dump($c);
 
 $foo = $c->foo;
+var_dump($foo);
 $foo->doSomething();//Bim::doSomething|Bar::doSomething|Foo::doSomething|
 
+die;
 // ---
 $di = new Container();
 $di->foo = 'Foo';
