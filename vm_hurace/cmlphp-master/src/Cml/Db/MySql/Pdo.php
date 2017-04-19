@@ -55,7 +55,7 @@ class Pdo extends Base
     {
         isset($conf['mark']) || $conf['mark'] = md5(json_encode($conf));
         $this->conf = $conf;
-        isset($this->conf['log_slow_sql']) || $this->conf['log_slow_sql'] = false;
+//        isset($this->conf['log_slow_sql']) || $this->conf['log_slow_sql'] = false;
         $this->tablePrefix = $this->conf['master']['tableprefix'];
         $this->conf['cache_expire'] === false && $this->openCache = false;
     }
