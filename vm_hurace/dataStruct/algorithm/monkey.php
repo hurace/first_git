@@ -31,8 +31,8 @@ function king($m, $n)
     return $arr;
 }
 
-$king = king(4, 5);
-var_export($king);
+//$king = king(4, 5);
+//var_export($king);
 
 
 function writeData($path, $mode, $data, $max_retreies = 10) {
@@ -78,3 +78,79 @@ class RedisPool
         return self::$connections[$alias];
     }
 }
+
+class Monkey
+{
+    public $no;
+    public $next = null;
+    public function __construct($no)
+    {
+        $this->no = $no;
+    }
+}
+
+$first = null;
+
+function addMonkey(&$first, $n)
+{
+    $cur = $first;
+    for ($i = 0;$i < $n;++$i) {
+        $monkey = new Monkey($i+1);
+
+        if (0 == $i) {
+            $first = $monkey;
+            $first->next = $monkey;
+            $cur = $first;
+        } else {
+            $cur->next = $monkey;
+            $monkey->next = $first;
+            $cur = $cur->next;
+        }
+    }
+}
+
+function showMonkey($first)
+{
+    $cur = $first;
+    while ($cur->next != $first) {
+        echo $cur->no,PHP_EOL;
+        $cur = $cur->next;
+    }
+    echo $cur->no,PHP_EOL;
+}
+
+function countMonkey($first, $m, $k)
+{
+    $tail = $first;
+    while ($tail->next != $first) {
+        $tail = $tail->next;
+    }
+
+
+    for ($i = 0; $i < $k-1;++$i) {
+        $tail->next = $first;
+        $first = $first->next;
+    }
+
+    while ($tail != $first) {
+
+        for ($i = 1;$i < $m;++$i) {
+            $tail = $tail->next;
+            $first = $first->next;
+        }
+        echo '出圈的人的编号是', $first->no, PHP_EOL;
+        $first = $first->next;
+        $tail->next = $first;
+
+    }
+    echo '最后留在圈圈的人的编号是', $tail->no, PHP_EOL;
+}
+
+$first = null;
+$n = 4;
+addMonkey($first, $n);
+showMonkey($first);
+
+$m = 4;
+$k = 1;
+countMonkey($first, $m, $k);
